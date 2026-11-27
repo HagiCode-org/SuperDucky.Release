@@ -1,0 +1,24 @@
+{
+  "name": "@hagicode/superducky-release",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "SuperDucky release site and release.json feed - built with Astro",
+  "scripts": {
+    "fetch:release": "node ./scripts/fetch-latest-release.mjs",
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "pnpm run fetch:release && astro build && node ./scripts/verify-build-output.mjs",
+    "preview": "astro preview",
+    "astro": "astro",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "astro": "^7.3.8"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.5"
+  },
+  "packageManager": "pnpm@12.16.1"
+}

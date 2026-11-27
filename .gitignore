@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+tsconfig.tsbuildinfo
+
+# Generated release data (written by scripts/fetch-latest-release.mjs, never committed)
+src/data/release.generated.json
+
+# Publication payload assembled by the release workflow
+.deploy/
+
+# Tests
+coverage/
+
+# Local scratch
+.tmp/
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
