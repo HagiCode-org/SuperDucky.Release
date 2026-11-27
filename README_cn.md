@@ -2,7 +2,7 @@
 
 [English](./README.md)
 
-SuperDucky(超级丫丫)发行版的公开下载镜像。SuperDucky 是一款面向 Unity 游戏的跨平台桌面模组管理器,支持逃离鸭科夫和深空当铺(Probably Stolen)。
+SuperDucky(超级丫丫)发行版的公开下载镜像。SuperDucky 是一款面向 PC 游戏的跨平台桌面模组管理器,支持逃离鸭科夫、深空当铺(Probably Stolen)和以撒的结合(The Binding of Isaac)。
 
 **[官网](https://sd.hagicode.com/)** · **[Microsoft Store](https://apps.microsoft.com/detail/9ndbtdkqbx30)** · **[发行版](https://github.com/HagiCode-org/SuperDucky.Release/releases)** · **[发行版站点](https://sd-release.hagicode.com/)**
 

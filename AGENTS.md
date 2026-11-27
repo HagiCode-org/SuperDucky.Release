@@ -2,7 +2,7 @@
 
 ## Project context
 
-- Public download mirror for SuperDucky (超级丫丫) releases: a cross-platform desktop mod manager for Unity games (Escape from Duckov and Probably Stolen).
+- Public download mirror for SuperDucky (超级丫丫) releases: a cross-platform desktop mod manager for PC games (Escape from Duckov, Probably Stolen and The Binding of Isaac).
 - Hosts the release site at https://sd-release.hagicode.com/ (an Astro static site) and its feed https://sd-release.hagicode.com/release.json. The site shows only the latest stable GitHub release.
 - The repository holds no application source. The application lives in the SuperDucky repository.
 

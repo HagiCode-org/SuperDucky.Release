@@ -2,7 +2,7 @@
 
 [简体中文](./README_cn.md)
 
-Public download mirror for SuperDucky (超级丫丫) releases. SuperDucky is a cross-platform desktop mod manager for Unity games. It supports Escape from Duckov and Probably Stolen (深空当铺).
+Public download mirror for SuperDucky (超级丫丫) releases. SuperDucky is a cross-platform desktop mod manager for PC games. It supports Escape from Duckov, Probably Stolen (深空当铺) and The Binding of Isaac (以撒的结合).
 
 **[Official site](https://sd.hagicode.com/en-US/)** · **[Microsoft Store](https://apps.microsoft.com/detail/9ndbtdkqbx30)** · **[Releases](https://github.com/HagiCode-org/SuperDucky.Release/releases)** · **[Release site](https://sd-release.hagicode.com/)**
 
