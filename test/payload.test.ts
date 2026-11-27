@@ -70,10 +70,13 @@ describe("ESA Pages metadata", () => {
     expect(root).toEqual(workflowCopy);
   });
 
-  it("uses the docs install and build commands and serves ./dist", async () => {
+  it("serves the prebuilt ./dist without any ESA-side build or install command", async () => {
+    // The workflow builds dist/ on GitHub Actions and publishes it. If esa.jsonc declares
+    // buildCommand or installCommand, ESA Pages runs them on its own image (no pnpm there)
+    // and the publication fails, so the payload must not declare them.
     const esa = await readJsonc(path.join(".github", "gh-pages", "esa.jsonc"));
-    expect(esa.installCommand).toBe("corepack enable && pnpm install --frozen-lockfile");
-    expect(esa.buildCommand).toBe("pnpm run build");
+    expect(esa).not.toHaveProperty("installCommand");
+    expect(esa).not.toHaveProperty("buildCommand");
     expect(esa.assets.directory).toBe("./dist");
   });
 });
