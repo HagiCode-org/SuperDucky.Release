@@ -19,19 +19,19 @@ Public download mirror for SuperDucky (超级丫丫) releases. SuperDucky is a c
 
 ### Mod management
 
-Enable, disable and reorder mods in one list, with drag-to-order and group ordering.
+Enable, disable and reorder mods in one list, with drag-to-order and group ordering. The Binding of Isaac has no load order, so its mods cannot be reordered; enabling and disabling still work for it.
 
 ![Animated illustration of the mod management page](images/mod-management-en.gif)
 
 ### Load order
 
-Spot dependency and order problems before you start the game.
+Spot dependency and order problems before you start the game. This section does not apply to The Binding of Isaac, which has no load order.
 
 ![Animated illustration of the load order page](images/load-order-en.gif)
 
 ### Groups
 
-Collect mods into groups and order the groups.
+Collect mods into groups and order the groups. For The Binding of Isaac you can collect mods into groups, but the groups cannot be ordered.
 
 ![Animated illustration of mod groups](images/groups-en.gif)
 
