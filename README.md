@@ -4,7 +4,7 @@
 
 Public download mirror for SuperDucky (超级丫丫) releases. SuperDucky is a cross-platform desktop mod manager for Unity games. It supports Escape from Duckov and Probably Stolen (深空当铺).
 
-**[Official site](https://sd.hagicode.com/en-US/)** · **[Microsoft Store](https://apps.microsoft.com/detail/9ndbtdkqbx30)** · **[Releases](https://github.com/HagiCode-org/SuperDucky.Release/releases)**
+**[Official site](https://sd.hagicode.com/en-US/)** · **[Microsoft Store](https://apps.microsoft.com/detail/9ndbtdkqbx30)** · **[Releases](https://github.com/HagiCode-org/SuperDucky.Release/releases)** · **[Release site](https://sd-release.hagicode.com/)**
 
 ![SuperDucky introduction](images/introduction-en.gif)
 
@@ -52,6 +52,29 @@ Browse Steam Workshop mods without leaving the app.
 Edit your save files from the same place. This feature is not released yet.
 
 ![Animated illustration of save editing](images/save-editing-en.gif)
+
+## Release site
+
+The release site at <https://sd-release.hagicode.com/> shows the latest stable release: its version, publish date, release notes and a download link for each platform. The same data is published as a machine-readable feed at <https://sd-release.hagicode.com/release.json>.
+
+The site is an Astro project managed with pnpm. The layout:
+
+- `scripts/fetch-latest-release.mjs` writes `src/data/release.generated.json` from the newest stable GitHub release. Drafts and prereleases are skipped. The generated file is not committed.
+- `src/data/release.ts` is the only module that reads that file. The English and Chinese pages (`src/pages/`) and the feed (`src/pages/release.json.ts`) both use it, so they cannot disagree.
+- `test/` holds the tests. `test/fixtures/` holds fixed GitHub API responses, so the tests never use the network.
+- `.github/workflows/release-site-publish.yml` runs every 6 hours. It publishes only when the live `release.json` is missing or shows a different version than the latest stable release. A manual run can force a publish.
+
+Commands, run from this directory (pnpm only):
+
+```bash
+pnpm install --frozen-lockfile   # install the locked dependencies
+pnpm test                        # run the tests (fixtures only, no network)
+pnpm run fetch:release           # write src/data/release.generated.json from the latest stable release
+pnpm run build                   # fetch, build dist/ and verify the output
+pnpm run dev                     # start a local development server
+```
+
+To build offline, point the fetch step at a fixture with `RELEASE_API_FIXTURE=test/fixtures/releases-valid.json pnpm run build`. That output holds test data and must not be published.
 
 ## Links
 
