@@ -34,10 +34,10 @@ export const GITHUB_RELEASES_URL = "https://github.com/HagiCode-org/SuperDucky.R
 export const COPY: Record<SiteLocale, SiteCopy> = {
   en: {
     htmlTitle: "SuperDucky downloads",
-    description: "Latest stable release of SuperDucky, a desktop mod manager for Unity games.",
+    description: "Latest stable release of SuperDucky, a desktop mod manager for PC games.",
     kicker: "Release downloads",
     title: "SuperDucky",
-    lead: "A cross-platform desktop mod manager for Unity games: Escape from Duckov and Probably Stolen. This page always shows the latest stable release.",
+    lead: "A cross-platform desktop mod manager for PC games: Escape from Duckov, Probably Stolen and The Binding of Isaac. This page always shows the latest stable release.",
     latest: "Latest release",
     version: "Version",
     published: "Published (UTC)",
@@ -58,10 +58,10 @@ export const COPY: Record<SiteLocale, SiteCopy> = {
   },
   "zh-CN": {
     htmlTitle: "超级丫丫下载",
-    description: "超级丫丫(SuperDucky)的最新稳定版本,一款面向 Unity 游戏的桌面模组管理器。",
+    description: "超级丫丫(SuperDucky)的最新稳定版本,一款面向 PC 游戏的桌面模组管理器。",
     kicker: "发行版下载",
     title: "SuperDucky(超级丫丫)",
-    lead: "面向 Unity 游戏的跨平台桌面模组管理器,支持逃离鸭科夫和深空当铺。本页始终显示最新的稳定版本。",
+    lead: "面向 PC 游戏的跨平台桌面模组管理器,支持逃离鸭科夫、深空当铺和以撒的结合。本页始终显示最新的稳定版本。",
     latest: "最新版本",
     version: "版本",
     published: "发布时间(UTC)",
