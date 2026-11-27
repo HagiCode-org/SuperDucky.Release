@@ -1,0 +1,156 @@
+name: Release Site Publish
+
+on:
+  schedule:
+    # Every 6 hours, offset from the top of the hour.
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Publish even when the live release.json already shows the latest stable version
+        type: boolean
+        default: false
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: release-site-publish
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: "24"
+  NODE_ENV: production
+  RELEASE_PAYLOAD_DIR: .deploy/gh-pages
+
+jobs:
+  check:
+    name: Decide whether the live site is stale
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      publish: ${{ steps.decide.outputs.publish }}
+    steps:
+      - name: Checkout current source ref
+        uses: actions/checkout@v4
+
+      # The decision script loads TypeScript modules through Node's type stripping, so it needs Node 24.
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Compare latest stable release with the live release.json
+        id: decide
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FORCE_PUBLISH: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.force) }}
+        run: node ./scripts/should-publish.mjs
+
+  build:
+    name: Prepare validated publication payload
+    needs: check
+    if: needs.check.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout current source ref
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify install and lockfile stability
+        run: |
+          test -d node_modules
+          git diff --exit-code -- pnpm-lock.yaml
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Fetch latest stable release, build the site and verify its output
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm run build
+
+      - name: Assemble gh-pages publication payload
+        run: |
+          rm -rf "${RELEASE_PAYLOAD_DIR}"
+          mkdir -p "${RELEASE_PAYLOAD_DIR}/dist"
+          cp .github/gh-pages/esa.jsonc "${RELEASE_PAYLOAD_DIR}/esa.jsonc"
+          cp -R dist/. "${RELEASE_PAYLOAD_DIR}/dist/"
+
+      - name: Upload validated gh-pages payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-site-payload
+          path: ${{ env.RELEASE_PAYLOAD_DIR }}
+          include-hidden-files: true
+          if-no-files-found: error
+
+  deploy:
+    name: Publish validated snapshot to gh-pages
+    needs: build
+    if: needs.build.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    environment:
+      name: release-site-production
+      url: https://sd-release.hagicode.com
+    steps:
+      - name: Checkout current source ref
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download validated gh-pages payload
+        uses: actions/download-artifact@v4
+        with:
+          name: release-site-payload
+          path: .deploy/gh-pages
+
+      - name: Publish validated gh-pages payload
+        id: publish-gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./.deploy/gh-pages
+          force_orphan: true
+          enable_jekyll: false
+
+      - name: Summarize publication
+        if: always()
+        env:
+          PUBLISH_OUTCOME: ${{ steps.publish-gh-pages.outcome }}
+          TRIGGER: ${{ github.event_name }}
+        run: |
+          {
+            echo "## Release site publication"
+            echo "- Public site: https://sd-release.hagicode.com"
+            echo "- Feed: https://sd-release.hagicode.com/release.json"
+            echo "- Trigger: ${TRIGGER}"
+            echo "- gh-pages publication: ${PUBLISH_OUTCOME}"
+            echo "- Published payload: branch-root \`esa.jsonc\` plus \`dist/\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$PUBLISH_OUTCOME" = "success" ]; then
+            echo "Published the validated release site payload to gh-pages."
+          else
+            echo "Release site publication to gh-pages did not complete successfully."
+            exit 1
+          fi
