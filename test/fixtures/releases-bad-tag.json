@@ -1,0 +1,46 @@
+[
+  {
+    "tag_name": "release-0.1.5",
+    "draft": false,
+    "prerelease": false,
+    "published_at": "2026-11-20T08:00:00Z",
+    "body": "Fixture notes.\n",
+    "assets": [
+      {
+        "name": "SuperDucky.Setup.0.1.5.exe",
+        "size": 164000000,
+        "browser_download_url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.1.5/SuperDucky.Setup.0.1.5.exe"
+      },
+      {
+        "name": "SuperDucky.0.1.5.exe",
+        "size": 134000000,
+        "browser_download_url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.1.5/SuperDucky.0.1.5.exe"
+      },
+      {
+        "name": "SuperDucky.0.1.5.msix",
+        "size": 247000000,
+        "browser_download_url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.1.5/SuperDucky.0.1.5.msix"
+      },
+      {
+        "name": "SuperDucky-0.1.5-x64.AppImage",
+        "size": 206000000,
+        "browser_download_url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.1.5/SuperDucky-0.1.5-x64.AppImage"
+      },
+      {
+        "name": "SuperDucky-0.1.5-linux-x64.tar.gz",
+        "size": 201000000,
+        "browser_download_url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.1.5/SuperDucky-0.1.5-linux-x64.tar.gz"
+      },
+      {
+        "name": "SuperDucky-0.1.5-macos-arm64.dmg",
+        "size": 190000000,
+        "browser_download_url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.1.5/SuperDucky-0.1.5-macos-arm64.dmg"
+      },
+      {
+        "name": "SHA256SUMS.txt",
+        "size": 512,
+        "browser_download_url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.1.5/SHA256SUMS.txt"
+      }
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "tag_name": "v0.2.0-beta.1",
+    "draft": false,
+    "prerelease": true,
+    "published_at": "2026-11-20T08:00:00Z",
+    "body": "Fixture notes.\n",
+    "assets": [
+      {
+        "name": "SuperDucky.Setup.0.2.0-beta.1.exe",
+        "size": 1,
+        "browser_download_url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.1.5/SuperDucky.Setup.0.2.0-beta.1.exe"
+      }
+    ]
+  },
+  {
+    "tag_name": "v0.2.0",
+    "draft": true,
+    "prerelease": false,
+    "published_at": null,
+    "body": "Fixture notes.\n",
+    "assets": [
+      {
+        "name": "SuperDucky.Setup.0.2.0.exe",
+        "size": 1,
+        "browser_download_url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.1.5/SuperDucky.Setup.0.2.0.exe"
+      }
+    ]
+  }
+]

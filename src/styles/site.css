@@ -1,0 +1,269 @@
+/* SuperDucky release site. Tokens come from repos/SuperDucky.Docs DESIGN.md (palette, radii, body font stack).
+   No web fonts: the system stack below is the only font. Dark mode follows prefers-color-scheme. */
+:root {
+  --text-strong: #1f2937;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --border-soft: #d6dee8;
+  --surface-muted: #f7f9fc;
+  --surface-light: #fbfcfe;
+  --accent-primary: #3b82f6;
+  --accent-primary-strong: #245ea8;
+  --accent-primary-soft: #dbeafe;
+  --accent-support: #14b8a6;
+  --page-bg: var(--surface-light);
+  --card-bg: #ffffff;
+  --rounded-sm: 0.625rem;
+  --rounded-md: 0.875rem;
+  --rounded-lg: 1rem;
+  --rounded-pill: 999px;
+  --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", "WenQuanYi Micro Hei", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-strong: #e7edf5;
+    --text-body: #c7d2df;
+    --text-muted: #c7d2df;
+    --border-soft: #253346;
+    --surface-muted: #131d2b;
+    --surface-light: #0f1724;
+    --accent-primary: #60a5fa;
+    --accent-primary-strong: #93c5fd;
+    --accent-primary-soft: #1e3a5f;
+    --page-bg: #0f1724;
+    --card-bg: #131d2b;
+    color-scheme: dark;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+a {
+  color: var(--accent-primary-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--accent-primary);
+  outline-offset: 2px;
+  border-radius: var(--rounded-sm);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text-strong);
+  line-height: 1.35;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.875rem;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+
+.shell {
+  width: 100%;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.brand {
+  margin: 0;
+  color: var(--text-strong);
+  font-weight: 700;
+}
+
+.switch {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0 0.875rem;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--rounded-pill);
+  background: var(--surface-muted);
+  color: var(--text-strong);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.intro {
+  display: grid;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.kicker {
+  margin: 0;
+  color: var(--accent-primary-strong);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.lead {
+  margin: 0;
+  max-width: 42rem;
+}
+
+main {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--rounded-lg);
+  padding: 1.25rem;
+  min-width: 0;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.875rem 1.5rem;
+  margin: 0;
+}
+
+.meta dt {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.meta dd {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 1.25rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.downloads {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.625rem;
+}
+
+.download {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--rounded-md);
+  background: var(--surface-muted);
+  color: var(--text-strong);
+  text-decoration: none;
+  min-width: 0;
+}
+
+.download:hover {
+  border-color: var(--accent-primary);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.5rem;
+  padding: 0 0.625rem;
+  border-radius: var(--rounded-pill);
+  background: var(--accent-primary-soft);
+  color: var(--accent-primary-strong);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.asset-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+
+.asset-size {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.notes {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--text-body);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  margin-top: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: var(--rounded-pill);
+  background: var(--accent-primary);
+  color: var(--surface-light);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.card p {
+  margin: 0;
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  padding-bottom: 1rem;
+  font-size: 0.9375rem;
+}
