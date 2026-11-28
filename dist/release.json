@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "version": "0.10.0",
+  "tag": "v0.10.0",
+  "publishedAt": "2026-11-28T06:58:29.000Z",
+  "releaseUrl": "https://sd-release.hagicode.com/",
+  "assets": [
+    {
+      "platform": "linux",
+      "name": "SuperDucky-0.10.0-linux-x64.tar.gz",
+      "url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.10.0/SuperDucky-0.10.0-linux-x64.tar.gz",
+      "size": 184603922
+    },
+    {
+      "platform": "linux",
+      "name": "SuperDucky-0.10.0-x64.AppImage",
+      "url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.10.0/SuperDucky-0.10.0-x64.AppImage",
+      "size": 189217272
+    },
+    {
+      "platform": "linux",
+      "name": "SuperDucky-linux-x64-0.10.0.zip",
+      "url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.10.0/SuperDucky-linux-x64-0.10.0.zip",
+      "size": 184614016
+    },
+    {
+      "platform": "windows",
+      "name": "SuperDucky.0.10.0.exe",
+      "url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.10.0/SuperDucky.0.10.0.exe",
+      "size": 137323450
+    },
+    {
+      "platform": "windows",
+      "name": "SuperDucky.0.10.0.msix",
+      "url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.10.0/SuperDucky.0.10.0.msix",
+      "size": 229332626
+    },
+    {
+      "platform": "windows",
+      "name": "SuperDucky.Setup.0.10.0.exe",
+      "url": "https://github.com/HagiCode-org/SuperDucky.Release/releases/download/v0.10.0/SuperDucky.Setup.0.10.0.exe",
+      "size": 155355546
+    }
+  ]
+}

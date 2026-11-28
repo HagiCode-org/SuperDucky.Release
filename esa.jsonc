@@ -1,0 +1,7 @@
+{
+  "name": "superducky-release",
+  "assets": {
+    "directory": "./dist",
+    "notFoundStrategy": "singlePageApplication"
+  }
+}

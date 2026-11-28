@@ -1,0 +1,4 @@
+# Cache policy for the release feed: clients must revalidate, so a newly published version is seen at once.
+# Astro copies public/ into dist/ unchanged, so this file is part of the publication payload.
+/release.json
+  Cache-Control: no-cache
